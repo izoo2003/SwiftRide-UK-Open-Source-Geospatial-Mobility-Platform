@@ -1,61 +1,52 @@
-# 🚀 FinanceAI Pro: Intelligent Trading & Education Ecosystem
+# 🚗 SwiftRide UK: Open-Source Geospatial Mobility Platform
 
-FinanceAI Pro is a sophisticated, full-stack financial platform designed to bridge the gap between educational theory and real-world trading. At its core, the platform uses an **AI Financial Assistant (RAG implementation)** to guide users through market complexities. The ecosystem seamlessly integrates a **Real-Time Portfolio Simulator**, a **Trading Hub**, and a gamified **Learning Hub** to provide a 360-degree financial management experience.
+SwiftRide UK is a full-stack, open-source ride-hailing solution specifically engineered for the United Kingdom market. The platform leverages high-performance backend architecture and cost-effective geospatial logic to provide a seamless booking experience, real-time fare estimation, and interactive route tracking.
 
 ---
 
-## ✨ Key Modules
+## ✨ Key Features
 
-### 🤖 AI Financial Assistant (RAG)
-* **Contextual Intelligence**: Implemented using **Retrieval-Augmented Generation** to query a proprietary knowledge base for factual, data-driven financial advice.
-* **Prompt Engineering**: Specialized assistant trained to act as a professional financial advisor.
-* **Portfolio Integration**: Capable of executing commands like "Analyze my portfolio" or "Assess trade risk" using internal platform data.
-
-### 📈 Trading Hub & Portfolio Simulator
-* **Real-Time Simulation**: A sandbox environment for trading stocks and crypto using live market data without financial risk.
-* **Portfolio Management**: Advanced analytics dashboard featuring asset allocation, performance history, and risk metrics.
-* **Leaderboards**: Compete with other users in trading simulations.
-
-### 🎓 Gamified Learning Hub
-* **Interactive Player**: Course tracking system that monitors engagement with integrated YouTube playlists.
-* **Progress Tracking**: Real-time lesson updates and progress bars that sync with the backend.
-* **Certifications**: Automated quiz modules that unlock professional badges and credentials upon successful completion.
+- **Dynamic Booking Engine**: Users can create accounts, select from various car types (Economy, Luxury, Van), and book rides across the UK.
+- **Geospatial Intelligence**: Integrated **OSRM (Open Source Routing Machine)** and **OpenStreetMap** for real-time distance calculations and optimized route plotting without expensive API overhead.
+- **Smart Fare Estimation**: Automated calculation of travel costs based on distance, time, and vehicle category.
+- **Real-Time Tracking**: Persistent record management allowing users to track their booking history and current ride status.
+- **High-Concurrency Architecture**: Built with a focus on speed and reliability using a FastAPI backend.
 
 ---
 
 ## ⚡ Tech Stack
 
-- **Framework**: [Next.js 15](https://nextjs.org) + [React 19](https://react.dev)
-- **Runtime**: [Bun](https://bun.sh) (High-performance Node.js alternative)
-- **Backend API**: [Hono](https://hono.dev) + [Express](https://expressjs.com) (Ultra-fast hybrid routing)
-- **AI Engine**: Gemini AI API + LangChain
-- **Database**: [Supabase (PostgreSQL)](https://supabase.com)
-- **ORM**: [Prisma](https://www.prisma.io)
-- **Authentication**: [Better Auth](https://better-auth.com)
-- **Styling**: Tailwind CSS + [Shadcn/UI](https://ui.shadcn.com)
+- **Frontend**: [React.js](https://react.dev/) — Interactive, responsive UI with real-time state management.
+- **Backend API**: [FastAPI](https://fastapi.tiangolo.com/) — High-performance Python framework for handling geospatial logic and booking concurrency.
+- **Database**: [Supabase (PostgreSQL)](https://supabase.com/) — Secure user authentication and robust relational data management for booking records.
+- **Mapping & Routing**: [OSRM](http://project-osrm.org/) + [OpenStreetMap](https://www.openstreetmap.org/) — Self-hosted, open-source geospatial engine for routing and distance services.
+- **Styling**: Tailwind CSS — Modern, sleek utility-first styling.
 
 ---
 
 ## 📂 Project Structure
 
-| Directory | Layer | Purpose |
-| :--- | :--- | :--- |
-| `/app/dashboard/` | **Frontend (View)** | Interactive dashboard UI for Chat, Portfolio, and Learning Hub. |
-| `/app/api/[...route]/` | **API Bridge** | Funnels frontend requests into the Hono/Express backend logic. |
-| `/server/routes/` | **Backend (Routing)** | Entry point defining API endpoints and mapping them to controllers. |
-| `/server/controllers/` | **Backend (Logic)** | Handles request validation and delegates tasks to services. |
-| `/server/services/` | **Backend (Data)** | Business logic for quiz scoring, progress tracking, and data updates. |
-| `/server/prisma/` | **Database (ORM)** | Schema definitions for Users, Holdings, and Course Progress. |
+| Directory | Purpose |
+| :--- | :--- |
+| `/frontend` | React.js source code, including booking forms, interactive maps, and user dashboards. |
+| `/backend` | FastAPI application containing geospatial service wrappers and API endpoints. |
+| `/database` | Supabase schema definitions and PostgreSQL migration scripts for booking logs. |
+| `/services` | Integration logic for OSRM route processing and fare calculation algorithms. |
 
 ---
 
 ## 🛠️ Project Setup
 
-### 1. Clone & Install
-```bash
-git clone [https://github.com/Anassarwar14/Final-Year-Project.git](https://github.com/Anassarwar14/Final-Year-Project.git)
-cd Final-Year-Project
+### 1. Prerequisites
+Ensure you have the following installed:
+- Node.js & npm/yarn
+- Python 3.9+
+- A Supabase project instance
 
-# Install Bun if needed
-npm install -g bun
-bun install
+### 2. Backend Setup
+```bash
+cd backend
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+pip install -r requirements.txt
+uvicorn main:app --reload
